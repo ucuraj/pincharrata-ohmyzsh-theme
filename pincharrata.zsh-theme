@@ -1,6 +1,12 @@
 if [ $UID -eq 0 ]; then NCOLOR="red"; else NCOLOR="green"; fi
 
-PROMPT='%{$fg[red]%}%B%n%{$reset_color%}%{$fg[white]%}%B@%{$reset_color%}%{$fg[red]%}%B%m%b%{$reset_color%}:%{$fg[white]%}%B%~/%b%{$reset_color%} 🇦🇹 ${VIRTUAL_ENV:+ 🐍 } %(!.#.$) '
+if [[ "$TERM_PROGRAM" == "Apple_Terminal" ]]; then
+  FLAG="🦁️"
+else
+  FLAG="🇦🇹️"
+fi
+
+PROMPT='%{$fg[red]%}%B%n%{$reset_color%}%{$fg[white]%}%B@%{$reset_color%}%{$fg[red]%}%B%m%b%{$reset_color%}:%{$fg[white]%}%B%~/%b%{$reset_color%} '"$FLAG"' ${VIRTUAL_ENV:+ 🐍 } %(!.#.$) '
 RPROMPT='$(git_prompt_info) [%*]'
 
 # git theming
